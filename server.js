@@ -33,9 +33,10 @@ app.engine("handlebars", exphbs({
 app.set("view engine", "handlebars");
 
 // Connect to the Mongo DB
-mongoose.connect("mongodb://localhost/clickhole", {
-  useNewUrlParser: true
-});
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
+
+mongoose.connect(MONGODB_URI, {
+  useNewUrlParser: true});
 
 // Routes
 
