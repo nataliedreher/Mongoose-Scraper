@@ -74,30 +74,21 @@ router.get("/scrape", function (req, res) {
 
 // })
 
-router.get("saved/:id", function (req, res) {
-    console.log(req.body)
-    db.Article.findOne({
-            _id: req.params.id
-        })
-        .then(function (dbArticle) {
-            console.log("hey")
-            console.log(dbArticle)
-            // If we were able to successfully find Articles, send them back to the client
-            db.Saved.create(dbArticle)
-                .then(function (dbSaved) {
-                    res.json(dbSaved);
-
-                })
-                .catch(function (err) {
-                    // If an error occurred, send it to the client
-                    res.json(err);
-                });
+router.post("/saved", function (req, res) {
+    // If we were able to successfully find Articles, send them back to the client
+    var data = req.body;
+    console.log(data)
+    // var bleh = {title: "bleh", link: "bleh.com", summary: "all the bleh"}
+    db.Saved.create(data)
+        .then(function (dbSaved) {
+            // res.json(dbSaved);
 
         })
         .catch(function (err) {
             // If an error occurred, send it to the client
             res.json(err);
         });
+
 
 })
 

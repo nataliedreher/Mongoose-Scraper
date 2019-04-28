@@ -33,21 +33,22 @@ $(document).on("click", "p", function () {
 });
 
 // When you click the savenote button
-$(".save").on("click", function () {
+$(".card").on("click", ".save", function () {
   // Grab the id associated with the article from the submit button
   var thisId = $(this).attr("data-id");
-  // console.log(thisID)
-
+  console.log($(this).attr("data-id"));
+  console.log($(this).parent().parent().parent().find(".card-body").text());
+  // console.log($(".article-link").text())
   // Run a POST request to change the note, using what's entered in the inputs
   $.ajax({
       method: "POST",
-      url: "/api/saved/" + thisId,
-      // data: {
-      //   title: $(".article-link").text(),
-      //   link: $(".article-link").attr("href"),
-      //   summary: $(".card-body").text()
-      //   // Value taken from note textarea
-      // }
+      url: "/api/saved",
+      data: {
+        title: $(this).parent().find(".article-link").text(),
+        link: $(this).parent().find(".article-link").attr("href"),
+        summary: $(this).parent().parent().parent().find(".card-body").text()
+        // Value taken from note textarea
+      }
     })
     // With that done
     .then(function (data) {
