@@ -35,15 +35,31 @@
     </div>
 </div>
 <div class="container-fluid article-container">
+    {{#each article}}
 
+    <div data-id="{{_id}}" class="card">
+        <div class="card-header">
+            <h3>
+                <a class="article-link" id="{{_id}}" target="_blank" rel="noopener noreferrer"
+                    href={{link}}>{{title}}</a>
+                <a data-id="{{_id}}" class="btn btn-success del">Delete From Saved</a>
+                <a data-id="{{_id}}" class="btn btn-success note">Add Note</a>
+            </h3>
+        </div>
+        <div class="card-body {{_id}}">{{summary}}</div>
+    </div>
+
+    {{/each}}
 </div>
 <footer class="footer">
     <div class="container">
-        <p>CLickhole Mongo Scraper</p>
+        <p>Clickhole Mongo Scraper</p>
     </div>
 </footer>
+
+
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.4.0/bootbox.min.js"></script>
-<script src="/assets/javascript/index.js"></script>
+<script src="/assets/javascript/app.js"></script>

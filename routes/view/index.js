@@ -17,14 +17,12 @@ router.get("/", function (req, res) {
 
             }
             res.render("index", data)
-            // res.json(dbArticle);
         })
         .catch(function (err) {
             // If an error occurred, send it to the client
-            // res.json(err);
+            res.json(err);
         });
 
-    // res.render("index")
 });
 
 router.get("/saved", function (req, res) {
@@ -41,7 +39,7 @@ router.get("/saved", function (req, res) {
                 data.article.push(dbArticle[i])
 
             }
-            res.render("index", data)
+            res.render("saved", data)
             // res.json(dbArticle);
         })
         .catch(function (err) {
@@ -49,11 +47,10 @@ router.get("/saved", function (req, res) {
             // res.json(err);
         });
 
-    // res.render("index")
 });
 
-router.get("/saved", function (req, res) {
-    res.render("saved")
-});
+// router.get("/saved", function (req, res) {
+//     res.render("saved")
+// });
 
 module.exports = router;
